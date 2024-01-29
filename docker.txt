@@ -1,0 +1,37 @@
+// Site: hub.docker.com
+
+// ANTES DE CRIAR O CONTAINER BAIXAR A IMAGEM PRIMEIRO //
+
+// Baixar Imagem
+Comando: docker pull (imagem)
+
+// Listar Imagens Instaladas
+Comando: docker image ls
+
+// Criar container  
+Comando: docker run --name (nome) -e (definir variaveis de ambiente) -p (porta padrão da tecnologia que for usar) -d (nome do modulo)
+
+// Verificar se o container foi criado
+Comando: docker container ls || docker ps
+
+// Verificar todos os container idenpendente se estão sendo executados ou não
+Comando: docker container ls -a || docker ps -a
+
+// Parar execução de um container
+Comando: docker stop (nome do container || id do container)
+
+// Iniciar a execução de um container
+Comando: docker start (nome do container || id do container)
+
+// Remover imagem instalada
+// 01 - Para funcionar primeiro precisamos para o container
+Comando: docker rmi (nome da imagem instalada || id da imagem)
+
+// Executar o container
+Comando: docker exec -it (nome do container) bash
+
+// Postgres com docker
+Comando: docker exec -it pg bash
+Comando: \l -> para listar todos os bancos
+Comando: \c -> para selecionar o banco de dados de sua preferencia
+//
