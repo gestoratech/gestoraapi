@@ -1,14 +1,17 @@
 // Importa o módulo 'pg' que fornece funcionalidades de acesso ao banco de dados PostgreSQL.
 const { Client } = require('pg');
+const dotenv = require('dotenv');
+
+dotenv.config();
+
+const connection = process.env.DATABASE_URL
 
 // Cria uma instância do cliente PostgreSQL para conectar ao banco de dados.
 const client = new Client({
-  host: 'localhost', // Endereço do servidor PostgreSQL.
-  port: 5432, // Porta padrão para conexão com o PostgreSQL sem docker.
-  user: 'postgres', // Nome de usuário do banco de dados.
-  password: 'postgres', // Senha do usuário do banco de dados.
-  database: 'gestoratech', // Nome do banco de dados que será usado.
+  connectionString: connection,
 });
+
+// 
 
 // Estabelece uma conexão com o banco de dados.
 client.connect();
