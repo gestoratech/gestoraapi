@@ -4,9 +4,9 @@ const { Client } = require('pg');
 // Cria uma instância do cliente PostgreSQL para conectar ao banco de dados.
 const client = new Client({
   host: 'localhost', // Endereço do servidor PostgreSQL.
-  port: 5432, // Porta padrão para conexão com o PostgreSQL.
-  user: 'root', // Nome de usuário do banco de dados.
-  password: 'root', // Senha do usuário do banco de dados.
+  port: 5432, // Porta padrão para conexão com o PostgreSQL sem docker.
+  user: 'postgres', // Nome de usuário do banco de dados.
+  password: 'postgres', // Senha do usuário do banco de dados.
   database: 'gestoratech', // Nome do banco de dados que será usado.
 });
 
