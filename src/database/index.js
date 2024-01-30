@@ -11,8 +11,6 @@ const client = new Client({
   connectionString: connection,
 });
 
-// 
-
 // Estabelece uma conexão com o banco de dados.
 client.connect();
 

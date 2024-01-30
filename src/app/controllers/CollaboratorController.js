@@ -1,6 +1,9 @@
+// Importa o módulo CollaboratorRepository
 const CollaboratorRepository = require('../repositories/CollaboratorRepository');
 
+// Define a classe CollaboratorController
 class CollaboratorController {
+  // Método assíncrono para listar todos os colaboradores
   async index(request, response) {
     const { orderBy } = request.query;
     const collaborators = await CollaboratorRepository.findAll(orderBy);
@@ -8,6 +11,7 @@ class CollaboratorController {
     response.json(collaborators);
   }
 
+  // Método assíncrono para mostrar informações de um colaborador específico
   async show(request, response) {
     const { id } = request.params;
     const collaborator = await CollaboratorRepository.findById(id);
@@ -19,6 +23,7 @@ class CollaboratorController {
     response.json(collaborator);
   }
 
+  // Método assíncrono para cadastrar um novo colaborador
   async store(request, response) {
     const {
       name, email, pass_email, skype, pass_skype, gmail,
@@ -46,6 +51,7 @@ class CollaboratorController {
     response.json(collaborator);
   }
 
+  // Método assíncrono para atualizar informações de um colaborador
   async update(request, response) {
     const { id } = request.params;
     const {
@@ -62,7 +68,7 @@ class CollaboratorController {
     const findByCollaborator = await CollaboratorRepository.findByEmail(email);
 
     if (findByCollaborator && findByCollaborator.id !== id) {
-      return response.status(400).json({ error: 'O patrimônio informado já está sendo utilizado!' });
+      return response.status(400).json({ error: 'O email informado já está sendo utilizado!' });
     }
 
     const collaborator = await CollaboratorRepository.update(id, {
@@ -80,6 +86,7 @@ class CollaboratorController {
     response.json(collaborator);
   }
 
+  // Método assíncrono para deletar um colaborador
   async delete(request, response) {
     const { id } = request.params;
 
@@ -95,4 +102,5 @@ class CollaboratorController {
   }
 }
 
+// Exporta uma instância da classe CollaboratorController
 module.exports = new CollaboratorController();

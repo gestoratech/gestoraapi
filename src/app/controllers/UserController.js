@@ -1,8 +1,9 @@
 // Importe o módulo UserRepository para interagir com os dados do usuário.
 const UserRepository = require('../repositories/UserRepository');
 
+// Define a classe UserController
 class UserController {
-  // Listar todos os usuários, com opção de ordenação.
+  // Método assíncrono para listar todos os usuários, com opção de ordenação.
   async index(request, response) {
     const { orderBy } = request.query;
     const users = await UserRepository.findAll(orderBy);
@@ -10,7 +11,7 @@ class UserController {
     response.json(users);
   }
 
-  // Obter um usuário por ID.
+  // Método assíncrono para obter um usuário por ID.
   async show(request, response) {
     // Obter o ID a partir dos parâmetros da requisição.
     const { id } = request.params;
@@ -23,7 +24,7 @@ class UserController {
     response.json(user);
   }
 
-  // Criar um novo usuário.
+  // Método assíncrono para criar um novo usuário.
   async store(request, response) {
     // Extrair informações do corpo da requisição.
     const {
@@ -38,7 +39,7 @@ class UserController {
     }
 
     if (password === '' || password === null || password === undefined) {
-      return response.status(400).json({ error: 'A senha informada não poderá ser vazio, nula ou indefinida!' });
+      return response.status(400).json({ error: 'A senha informada não poderá ser vazia, nula ou indefinida!' });
     }
 
     // Criar um novo usuário e retorná-lo.
@@ -54,7 +55,7 @@ class UserController {
     response.json(user);
   }
 
-  // Atualizar um usuário existente.
+  // Método assíncrono para atualizar um usuário existente.
   async update(request, response) {
     // Obter o ID a partir dos parâmetros da requisição.
     const { id } = request.params;
@@ -70,7 +71,7 @@ class UserController {
     }
 
     if (password === '' || password === null || password === undefined) {
-      return response.status(400).json({ error: 'A senha informada não poderá ser vazio, nula ou indefinida!' });
+      return response.status(400).json({ error: 'A senha informada não poderá ser vazia, nula ou indefinida!' });
     }
 
     // Verificar se o email já está em uso por outro usuário.
@@ -93,7 +94,7 @@ class UserController {
     response.json(user);
   }
 
-  // Excluir um usuário existente.
+  // Método assíncrono para excluir um usuário existente.
   async delete(request, response) {
     // Obter o ID a partir dos parâmetros da requisição.
     const { id } = request.params;

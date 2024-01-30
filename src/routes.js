@@ -1,12 +1,16 @@
+// Importa o módulo Router do framework Express para definir rotas.
 const { Router } = require('express');
 
+// Importa os controladores (controllers) para lidar com as requisições nas rotas.
 const UserController = require('./app/controllers/UserController');
 const InventoryController = require('./app/controllers/InventoryController');
 const CollaboratorController = require('./app/controllers/CollaboratorController');
 const AuthController = require('./app/controllers/AuthController');
 
+// Importa o middleware de autenticação.
 const isAuthenticated = require('./app/middlewares/isAuthenticated');
 
+// Cria uma instância do Router.
 const router = Router();
 
 // Rotas Usuários
@@ -33,4 +37,5 @@ router.put('/colaboradores/:id', CollaboratorController.update);
 // Rota Autenticação
 router.post('/auth', AuthController.store);
 
+// Exporta as rotas definidas.
 module.exports = router;

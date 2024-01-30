@@ -1,6 +1,9 @@
+// Importa o módulo InventoryRepository
 const InventoryRepository = require('../repositories/InventoryRepository');
 
+// Define a classe InventoryController
 class InventoryController {
+  // Método assíncrono para listar todos os inventários
   async index(request, response) {
     const { orderBy } = request.query;
     const inventories = await InventoryRepository.findAll(orderBy);
@@ -8,6 +11,7 @@ class InventoryController {
     response.json(inventories);
   }
 
+  // Método assíncrono para mostrar informações de um inventário específico
   async show(request, response) {
     const { id } = request.params;
     const inventory = await InventoryRepository.findById(id);
@@ -19,6 +23,7 @@ class InventoryController {
     response.json(inventory);
   }
 
+  // Método assíncrono para cadastrar um novo inventário
   async store(request, response) {
     const {
       asset, model, brand, username, sector, equipment, keyboard, mouse,
@@ -37,6 +42,7 @@ class InventoryController {
     response.json(inventory);
   }
 
+  // Método assíncrono para atualizar informações de um inventário
   async update(request, response) {
     const { id } = request.params;
     const {
@@ -62,6 +68,7 @@ class InventoryController {
     response.json(inventory);
   }
 
+  // Método assíncrono para deletar um inventário
   async delete(request, response) {
     const { id } = request.params;
 
@@ -77,4 +84,5 @@ class InventoryController {
   }
 }
 
+// Exporta uma instância da classe InventoryController
 module.exports = new InventoryController();
